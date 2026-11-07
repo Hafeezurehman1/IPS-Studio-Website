@@ -68,7 +68,7 @@
     open(project, { portfolio = "3D Portfolio" } = {}) {
       if (!project) return;
       stopMedia();
-      project = { ...project, artist: "IPS Studio" };
+      project = { ...project, artist: project.suppressCreatorDisplay ? "" : "IPS Studio" };
       this.currentProject = project;
       const images = Array.isArray(project.images) ? project.images : [];
       activeImageIndex = 0;
@@ -77,8 +77,10 @@
       dialog.querySelector(".portfolio3d-dialog__category").textContent = project.category || "";
       dialog.querySelector(".portfolio3d-dialog__description").textContent = project.description || "";
       dialog.querySelector(".project-modal__eyebrow").textContent = `IPS Studio / ${portfolio}`;
-      const detailValues = { ...(project.details && typeof project.details === "object" ? project.details : {}), Artist: "IPS Studio" };
-      if (!detailValues.Source) detailValues.Source = project.source || "IPS Studio portfolio";
+      const detailValues = { ...(project.details && typeof project.details === "object" ? project.details : {}) };
+      if (project.suppressCreatorDisplay) delete detailValues.Artist;
+      else if (!detailValues.Artist) detailValues.Artist = "IPS Studio";
+      if (!project.sourceInternalOnly && !detailValues.Source) detailValues.Source = project.source || "IPS Studio portfolio";
       const details = Object.entries(detailValues).filter(([, value]) => value);
       dialog.querySelector(".project-modal__details").innerHTML = details.map(([label, value]) => `<div><dt>${escape(label)}</dt><dd>${escape(value)}</dd></div>`).join("");
       gallery.innerHTML = images.map((image, index) => `<button class="portfolio3d-dialog__thumb" type="button" data-media-index="${index}" aria-label="Show ${escape(image.label || `image ${index + 1}`)}" aria-pressed="${index === 0 && !project.video}"><img src="${escape(asset(image.src))}" alt="" loading="lazy" decoding="async" /><span>${escape(image.label || `Image ${index + 1}`)}</span></button>`).join("");

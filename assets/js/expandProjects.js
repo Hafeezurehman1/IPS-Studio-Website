@@ -1,8 +1,8 @@
 (() => {
   const initialCount = 6;
   const pages = [
-    { grid: "games-page-grid", button: "games-page-expand", filters: "games-page-filters" },
-    { grid: "modeling-page-grid", button: "modeling-page-expand" },
+    { grid: "games-page-grid", button: "games-page-expand", filters: "games-page-filters", filterAttribute: "data-games-page-filter", status: "games-page-status", statusMode: "games" },
+    { grid: "modeling-page-grid", button: "modeling-page-expand", filters: "modeling-page-filters", filterAttribute: "data-modeling-page-filter", filteredClass: "modeling-filter-hidden", status: "modeling-page-status", statusMode: "categories" },
     { grid: "animation-page-grid", button: "animation-page-expand" },
   ];
   const config = pages.find(({ grid }) => document.getElementById(grid));
@@ -13,13 +13,17 @@
   const label = button?.querySelector("[data-expansion-label]");
   const arrow = button?.querySelector(".project-expansion-toggle__arrow");
   const filterGroup = config.filters ? document.getElementById(config.filters) : null;
-  const status = config.filters ? document.getElementById("games-page-status") : null;
+  const status = config.status ? document.getElementById(config.status) : null;
+  const filterAttribute = config.filterAttribute || "data-games-page-filter";
   const reducedMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
   let expanded = false;
 
   if (!grid || !button || !label) return;
 
-  const getCards = () => [...grid.children].filter((card) => card.matches(".game-card, .portfolio3d-card, .animation-page-card"));
+  const getCards = () => [...grid.children].filter((card) =>
+    card.matches(".game-card, .portfolio3d-card, .animation-page-card")
+    && (!config.filteredClass || !card.classList.contains(config.filteredClass)),
+  );
   const cancelCardAnimations = (card) => card.getAnimations?.().forEach((animation) => animation.cancel());
   const animateCard = (card, hide, delay = 0) => {
     cancelCardAnimations(card);
@@ -41,14 +45,19 @@
     }, { once: true });
   };
 
-  const syncGameStatus = (cards) => {
+  const syncStatus = (cards) => {
     if (!status) return;
-    const activeFilter = filterGroup?.querySelector("[aria-pressed='true']");
+    const visibleCount = expanded ? cards.length : Math.min(initialCount, cards.length);
+    const activeFilter = filterGroup?.querySelector(`[${filterAttribute}][aria-pressed='true']`);
+    if (config.statusMode === "categories") {
+      const itemLabel = cards.length === 1 ? "project" : "projects";
+      status.textContent = `Showing ${visibleCount} of ${cards.length} ${activeFilter?.querySelector("span")?.textContent.trim() || "3D Work"} ${itemLabel}.`;
+      return;
+    }
     const filterId = activeFilter?.dataset.gamesPageFilter;
     const category = filterId && filterId !== "all"
       ? `${activeFilter.textContent.trim().toLowerCase()} games`
       : "published games";
-    const visibleCount = expanded ? cards.length : Math.min(initialCount, cards.length);
     status.textContent = `Showing ${visibleCount} of ${cards.length} ${category}.`;
   };
 
@@ -65,9 +74,12 @@
       const hide = !expanded && index >= initialCount;
       if (card.hidden === hide) return;
       if (!animate) card.hidden = hide;
-      else animateCard(card, hide, hide ? (index - initialCount) * 18 : (index - initialCount) * 42);
+      else {
+        const staggerIndex = Math.min(Math.max(0, index - initialCount), 12);
+        animateCard(card, hide, staggerIndex * (hide ? 10 : 12));
+      }
     });
-    syncGameStatus(cards);
+    syncStatus(cards);
   };
 
   button.addEventListener("click", () => {
@@ -76,7 +88,7 @@
   });
 
   filterGroup?.addEventListener("click", (event) => {
-    if (!event.target.closest("[data-games-page-filter]")) return;
+    if (!event.target.closest(`[${filterAttribute}]`)) return;
     expanded = false;
     window.queueMicrotask ? window.queueMicrotask(() => refresh(false)) : Promise.resolve().then(() => refresh(false));
   });
