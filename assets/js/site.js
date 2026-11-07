@@ -101,7 +101,7 @@
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape" && toggle.getAttribute("aria-expanded") === "true") closeMenu({ restoreFocus: true });
   });
-  window.matchMedia("(min-width: 961px)").addEventListener?.("change", (event) => {
+  window.matchMedia("(min-width: 1151px)").addEventListener?.("change", (event) => {
     if (event.matches) closeMenu();
   });
   window.addEventListener("scroll", syncHeader, { passive: true });

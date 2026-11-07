@@ -9148,7 +9148,7 @@ body :is(a, button, input, select, textarea):focus-visible {
   .studio-partner__layout { gap: 34px; }
   .studio-partner__visual { min-height: 365px; }
 }
-@media (max-width: 960px) {
+@media (max-width: 1150px) {
   .site-header,
   .site-header.is-scrolled { height: 70px; }
   .menu-toggle { position: relative; z-index: 102; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; }
@@ -11133,7 +11133,7 @@ body .game-card:focus-within .game-card__link { color: var(--ips-teal); }
 }
 
 /* Mobile navigation: anchor the menu below the fixed header, never inside its blur layer. */
-@media (max-width: 960px) {
+@media (max-width: 1150px) {
   .site-header,
   .site-header.is-scrolled {
     z-index: 1100;
@@ -11145,12 +11145,14 @@ body .game-card:focus-within .game-card__link { color: var(--ips-teal); }
   .site-header .main-nav {
     position: absolute;
     inset: calc(100% + 8px) 0 auto;
+    left: auto;
     z-index: 1;
     display: flex;
     flex-direction: column;
     align-items: stretch;
     justify-content: flex-start;
     gap: 0;
+    width: min(100%, 430px);
     max-height: calc(100vh - 90px);
     max-height: calc(100dvh - 90px);
     overflow-y: auto;
@@ -11331,4 +11333,9 @@ body .service-card--home:focus-within .service-card__icon {
 }
 @media (prefers-reduced-motion: reduce) {
   .hero-prism { animation: none; }
+}
+
+/* Preserve intact words in headings and body copy at narrow viewport widths. */
+body :is(h1, h2, h3, h4, h5, h6, p, li) {
+  hyphens: none;
 }
