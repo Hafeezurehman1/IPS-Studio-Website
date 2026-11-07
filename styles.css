@@ -11204,12 +11204,29 @@ body .game-card:focus-within .game-card__link { color: var(--ips-teal); }
   }
 
   .site-header .menu-toggle span {
+    visibility: hidden !important;
+  }
+
+  .site-header .menu-toggle::before,
+  .site-header .menu-toggle::after {
+    position: absolute;
+    left: 10px;
     display: block;
     width: 22px;
     height: 2px;
-    margin: 0;
     border-radius: 2px;
     background: var(--ips-white);
+    content: "";
+    transition: transform .25s ease;
+  }
+
+  .site-header .menu-toggle::before { top: 15px; }
+  .site-header .menu-toggle::after { bottom: 15px; }
+  .site-header .menu-toggle[aria-expanded="true"]::before {
+    transform: translateY(5px) rotate(45deg);
+  }
+  .site-header .menu-toggle[aria-expanded="true"]::after {
+    transform: translateY(-5px) rotate(-45deg);
   }
 }
 
