@@ -9652,43 +9652,43 @@ button:focus-visible > span[aria-hidden="true"] { transform: translateX(3px); }
 
 /* Page art direction: shared IPS language, individual capability palettes. */
 :root {
-  --ips-navy: #090b12;
-  --ips-charcoal: #191e2b;
-  --ips-surface: #202638;
-  --ips-graphite: #293247;
-  --ips-purple: #8957e5;
-  --ips-violet: #ad83ff;
-  --ips-blue: #71839e;
-  --ips-cyan: #83aab9;
-  --ips-teal: #39bfa8;
-  --ips-gold: #cba65f;
-  --ips-champagne: #e5c47b;
+  --ips-navy: #0b1020;
+  --ips-charcoal: #141824;
+  --ips-surface: #1c2231;
+  --ips-graphite: #252c3b;
+  --ips-purple: #8055e8;
+  --ips-violet: #a16bff;
+  --ips-blue: #6173a8;
+  --ips-cyan: #59c3d2;
+  --ips-teal: #45c6be;
+  --ips-gold: #d9b76e;
+  --ips-champagne: #f0d69b;
   --ips-coral: #e9897b;
   --ips-orange: #e7a36d;
   --ips-pink: #d795c4;
-  --ips-white: #f8f7fc;
-  --ips-muted: #c2c6d2;
-  --ips-dim: #929bad;
-  --ips-navy-rgb: 9, 11, 18;
-  --ips-charcoal-rgb: 25, 30, 43;
-  --ips-surface-rgb: 32, 38, 56;
-  --ips-graphite-rgb: 41, 50, 71;
-  --ips-purple-rgb: 137, 87, 229;
-  --ips-violet-rgb: 173, 131, 255;
-  --ips-teal-rgb: 57, 191, 168;
-  --ips-gold-rgb: 203, 166, 95;
-  --ips-champagne-rgb: 229, 196, 123;
+  --ips-white: #f4f3f8;
+  --ips-muted: #a8afbf;
+  --ips-dim: #798396;
+  --ips-navy-rgb: 11, 16, 32;
+  --ips-charcoal-rgb: 20, 24, 36;
+  --ips-surface-rgb: 28, 34, 49;
+  --ips-graphite-rgb: 37, 44, 59;
+  --ips-purple-rgb: 128, 85, 232;
+  --ips-violet-rgb: 161, 107, 255;
+  --ips-teal-rgb: 69, 198, 190;
+  --ips-gold-rgb: 217, 183, 110;
+  --ips-champagne-rgb: 240, 214, 155;
   --ips-coral-rgb: 233, 137, 123;
   --ips-pink-rgb: 215, 149, 196;
-  --ips-white-rgb: 248, 247, 252;
-  --ips-line: rgba(194, 198, 210, .14);
-  --ips-line-strong: rgba(194, 198, 210, .24);
-  --ips-glass: rgba(25, 30, 43, .94);
+  --ips-white-rgb: 244, 243, 248;
+  --ips-line: rgba(168, 175, 191, .14);
+  --ips-line-strong: rgba(168, 175, 191, .24);
+  --ips-glass: rgba(20, 24, 36, .84);
   --ips-primary-gradient: linear-gradient(125deg, #6743c1, var(--ips-purple) 58%, #926bed);
   --ips-primary-gradient-hover: linear-gradient(125deg, #7552d4, #936be9 60%, var(--ips-violet));
   --ips-surface-gradient: linear-gradient(145deg, rgba(var(--ips-graphite-rgb), .58), rgba(var(--ips-charcoal-rgb), .96) 65%);
   --ips-card-shadow: 0 18px 44px rgba(2, 4, 12, .2), inset 0 1px rgba(var(--ips-white-rgb), .025);
-  --ips-accent-shadow: 0 8px 24px rgba(var(--ips-purple-rgb), .17), inset 0 1px rgba(var(--ips-white-rgb), .18);
+  --ips-accent-shadow: 0 10px 28px rgba(var(--ips-purple-rgb), .24), inset 0 1px rgba(var(--ips-white-rgb), .2);
   --ink: var(--ips-navy);
   --ink-soft: var(--ips-charcoal);
   --panel: var(--ips-surface);
@@ -11286,54 +11286,28 @@ body .game-card:focus-within .game-card__link { color: var(--ips-teal); }
   filter: drop-shadow(0 24px 30px rgba(0, 0, 0, .34));
   transform: translate(-50%, -50%) rotateX(-15deg) rotateY(-26deg);
 }
-.hero-prism__face {
-  border-color: rgba(var(--ips-violet-rgb), .28);
-  background: linear-gradient(145deg, rgba(var(--ips-graphite-rgb), .96), rgba(var(--ips-charcoal-rgb), .98) 70%);
-  box-shadow: inset 0 1px rgba(var(--ips-white-rgb), .1);
-}
 .hero-prism__face--front::before,
 .hero-prism__scanline { display: none; }
-.hero-prism__face--front strong { text-shadow: none; }
 .hero-prism__face--front small,
 .hero-prism__face--bottom small { color: var(--ips-muted); }
 
-/* Calm alternating section surfaces; avoid a different radial glow behind every block. */
-body[data-page="home"] .studio-highlights,
-body[data-page="home"] .services-showcase,
-body[data-page="home"] .studio-process,
-body[data-page="home"] .contact { background: var(--ips-charcoal); }
-body[data-page="home"] .studio-intro,
-body[data-page="home"] .client-feedback,
-body[data-page="home"] .team-section { background: var(--ips-navy); }
-body .portfolio3d-card:hover,
-body .portfolio3d-card:focus-within,
-body .animation-page-card:hover,
-body .animation-page-card:focus-within,
-body .portfolio-project-card:hover,
-body .portfolio-project-card:focus-within {
-  border-color: rgba(var(--ips-violet-rgb), .4);
-  box-shadow: 0 18px 38px rgba(0, 0, 0, .24);
-}
+/* Keep the pre-palette card motion while inheriting the restored shared colors. */
 body .service-card:hover,
 body .service-card:focus-within,
 body .service-card--home:hover,
 body .service-card--home:focus-within {
   transform: translateY(-3px);
-  border-color: color-mix(in srgb, var(--service-accent, var(--ips-violet)) 34%, var(--ips-line));
-  box-shadow: 0 16px 34px rgba(0, 0, 0, .2);
 }
 body .service-card:hover .service-card__icon,
 body .service-card:focus-within .service-card__icon,
 body .service-card--home:hover .service-card__icon,
 body .service-card--home:focus-within .service-card__icon {
   transform: translateY(-2px);
-  filter: none;
 }
 
 .services-page-hero {
   min-height: 0;
   padding: clamp(146px, 16vw, 196px) 0 clamp(76px, 8vw, 110px);
-  background: linear-gradient(180deg, var(--ips-navy), var(--ips-charcoal));
 }
 .services-page-hero__layout {
   display: grid;
