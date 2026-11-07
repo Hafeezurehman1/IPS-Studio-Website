@@ -96,7 +96,7 @@
   });
   navLinks.forEach((link) => link.addEventListener("click", () => closeMenu()));
   document.addEventListener("pointerdown", (event) => {
-    if (toggle.getAttribute("aria-expanded") === "true" && !header.contains(event.target)) closeMenu();
+    if (toggle.getAttribute("aria-expanded") === "true" && !nav.contains(event.target) && !toggle.contains(event.target)) closeMenu();
   });
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape" && toggle.getAttribute("aria-expanded") === "true") closeMenu({ restoreFocus: true });
