@@ -77,11 +77,13 @@
   const nav = document.querySelector("#main-nav");
   const toggle = document.querySelector(".menu-toggle");
   if (!header || !nav || !toggle) return;
-  const closeMenu = () => {
+  const navLinks = [...nav.querySelectorAll("a")];
+  const closeMenu = ({ restoreFocus = false } = {}) => {
     nav.classList.remove("is-open");
     toggle.setAttribute("aria-expanded", "false");
     toggle.setAttribute("aria-label", "Open navigation menu");
     document.body.classList.remove("menu-open");
+    if (restoreFocus) toggle.focus();
   };
   const syncHeader = () => header.classList.toggle("is-scrolled", window.scrollY > 24);
   toggle.addEventListener("click", () => {
@@ -90,9 +92,18 @@
     toggle.setAttribute("aria-label", open ? "Close navigation menu" : "Open navigation menu");
     nav.classList.toggle("is-open", open);
     document.body.classList.toggle("menu-open", open);
+    if (open) requestAnimationFrame(() => navLinks[0]?.focus());
   });
-  nav.querySelectorAll("a").forEach((link) => link.addEventListener("click", closeMenu));
-  document.addEventListener("keydown", (event) => { if (event.key === "Escape") closeMenu(); });
+  navLinks.forEach((link) => link.addEventListener("click", () => closeMenu()));
+  document.addEventListener("pointerdown", (event) => {
+    if (toggle.getAttribute("aria-expanded") === "true" && !header.contains(event.target)) closeMenu();
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && toggle.getAttribute("aria-expanded") === "true") closeMenu({ restoreFocus: true });
+  });
+  window.matchMedia("(min-width: 961px)").addEventListener?.("change", (event) => {
+    if (event.matches) closeMenu();
+  });
   window.addEventListener("scroll", syncHeader, { passive: true });
   syncHeader();
 
