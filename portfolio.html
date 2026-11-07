@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#080b12" />
+    <meta name="description" content="Explore selected game, 3D modeling, animation, UI/UX, and game art work by IPS Studio." />
+    <title>Selected Work | IPS Studio</title>
+    <link rel="icon" type="image/svg+xml" href="./assets/images/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="./assets/js/portfolio3D.js" defer></script>
+    <script src="./assets/js/animations.js" defer></script>
+    <script src="./assets/js/gameDevelopment.js" defer></script>
+    <script src="./assets/js/supplementalPortfolio.js" defer></script>
+    <script src="./assets/js/site.js" defer></script>
+    <script src="./assets/js/projectModal.js" defer></script>
+    <script src="./assets/js/unifiedPortfolio.js" defer></script>
+  </head>
+  <body class="portfolio-page" data-page="portfolio">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header" id="site-header">
+      <div class="container header__inner">
+        <a class="brand" href="./index.html#home" aria-label="IPS Studio home"><span class="brand__mark" aria-hidden="true"><span></span><span></span><span></span><span></span></span><span class="brand__wordmark"><strong>IPS</strong><small>STUDIO</small></span></a>
+        <nav class="main-nav" id="main-nav" aria-label="Main navigation">
+          <a href="./index.html#home" data-page-link="home">HOME</a>
+          <a href="./games/index.html" data-page-link="games">GAMES</a>
+          <a href="./3d-modeling/index.html" data-page-link="modeling">3D MODELING</a>
+          <a href="./animation/index.html" data-page-link="animation">ANIMATION</a>
+          <a href="./services/index.html" data-page-link="services">SERVICES</a>
+          <a href="./about/index.html" data-page-link="about">ABOUT</a>
+          <a class="button button--small button--outline nav-cta" href="./index.html#contact">START A PROJECT <span aria-hidden="true">&#8594;</span></a>
+        </nav>
+        <button class="menu-toggle" type="button" aria-label="Open navigation menu" aria-controls="main-nav" aria-expanded="false"><span></span><span></span></button>
+      </div>
+    </header>
+    <main id="main">
+      <section class="catalog-page-hero"><div class="container catalog-page-hero__content"><p class="eyebrow"><span class="eyebrow-dot"></span> IPS Studio / Creative Work</p><h1>SELECTED <span>WORK.</span></h1><p>Explore real projects across game development, 3D modeling, animation, UI/UX, and game art.</p></div></section>
+      <section class="unified-portfolio section-pad" id="portfolio" aria-labelledby="portfolio-title">
+        <div class="container">
+          <div class="section-heading section-heading--split reveal">
+            <div><p class="eyebrow"><span class="eyebrow-dash"></span> IPS Studio / Portfolio</p><h2 class="section-title" id="portfolio-title">OUR <em>PORTFOLIO.</em></h2></div>
+            <div class="section-heading__aside"><p>Browse the work by discipline. Open a project to see available images and details.</p></div>
+          </div>
+          <div class="portfolio-filter-list" role="group" aria-label="Filter portfolio projects">
+            <button class="portfolio-filter is-active" type="button" data-portfolio-filter="all" aria-pressed="true">All Projects</button>
+            <button class="portfolio-filter" type="button" data-portfolio-filter="game-development" aria-pressed="false">Game Development</button>
+            <button class="portfolio-filter" type="button" data-portfolio-filter="3d-modeling" aria-pressed="false">3D Modeling</button>
+            <button class="portfolio-filter" type="button" data-portfolio-filter="3d-animation" aria-pressed="false">3D Animation</button>
+            <button class="portfolio-filter" type="button" data-portfolio-filter="marketing" aria-pressed="false">Marketing &amp; ASO</button>
+            <button class="portfolio-filter" type="button" data-portfolio-filter="ui-ux-design" aria-pressed="false">UI/UX Design</button>
+            <button class="portfolio-filter" type="button" data-portfolio-filter="game-art" aria-pressed="false">Game Art</button>
+          </div>
+          <p class="portfolio-filter-status" id="portfolio-filter-status" role="status" aria-live="polite"></p>
+          <article class="portfolio-showcase" id="portfolio-featured-3d" data-portfolio-category="3d-modeling" data-portfolio-project-id="racing-kart">
+            <button class="portfolio-showcase__media" type="button" data-portfolio-project-id="racing-kart" aria-label="View the Racing Kart 3D modeling project"><img src="./assets/3d/racing-kart/racing-kart.webp" alt="Red racing kart model from the IPS Studio 3D portfolio" loading="lazy" decoding="async" /></button>
+            <div class="portfolio-showcase__copy"><p class="eyebrow"><span class="eyebrow-dash"></span> 3D Modeling / Featured Project</p><h3>Racing Kart</h3><p>A stylized red racing kart, shown in rendered, shaded, wireframe and UV views.</p><button class="portfolio-project__action" type="button" data-portfolio-project-id="racing-kart">View Project <span aria-hidden="true">&#8594;</span></button></div>
+          </article>
+          <div class="portfolio-project-grid" id="portfolio-project-grid" aria-label="IPS Studio portfolio projects"></div>
+          <button class="portfolio-expand-toggle" type="button" data-portfolio-toggle aria-expanded="false" aria-controls="portfolio-project-grid" hidden>EXPLORE NOW <span aria-hidden="true">&#8594;</span></button>
+          <div class="portfolio-empty" id="portfolio-empty" hidden><p class="eyebrow"><span class="eyebrow-dash"></span> Portfolio / Selected work</p><h3 data-portfolio-empty-title></h3><p data-portfolio-empty-message></p><a class="text-link" data-portfolio-empty-link href="./index.html#contact">Discuss a project <span aria-hidden="true">&#8594;</span></a></div>
+        </div>
+      </section>
+      <section class="dev-page-cta"><div class="container dev-page-cta__inner"><div><p class="eyebrow"><span class="eyebrow-dash"></span> Have a project in mind?</p><h2>LET’S MAKE<br /><em>WHAT’S NEXT.</em></h2></div><a class="button button--primary" href="./index.html#contact">Start a project <span aria-hidden="true">&#8599;</span></a></div></section>
+    </main>
+    <footer class="site-footer"><div class="container footer__main"></div><div class="container footer__bottom"><span>&#169; <span id="current-year">2026</span> IPS Studio.</span><span>Game Development / 3D / Animation / UI/UX</span></div></footer>
+  </body>
+</html>
